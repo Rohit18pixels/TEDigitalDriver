@@ -1,9 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".auth.AuthMainActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/mount"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80002E02"/>
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+
+            android:text="Guest Account"
+            android:background="@drawable/boxborder"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:textSize="19sp" />
+
+        <TextView
+            android:layout_marginTop="7dp"
+            android:gravity="center"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+
+            android:text="Get Started"
+            android:background="@drawable/boxborder"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:textSize="19sp" />
+
+        <TextView
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+
+            android:gravity="center"
+            android:layout_width="240dp"
+            android:layout_height="60dp"
+
+
+            android:text="Login"
+            android:background="@drawable/boxborder"
+            android:textColor="@color/white"
+            android:fontFamily="@font/montserrat"
+            android:textSize="19sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
