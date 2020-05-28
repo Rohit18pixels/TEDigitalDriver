@@ -8,14 +8,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark">
 
         <ImageView
             android:id="@+id/imgLogo"
             android:layout_centerHorizontal="true"
             android:layout_width="240dp"
             android:layout_height="280dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@drawable/login_logo"
             android:layout_marginTop="37dp"/>
 
         <TextView
@@ -24,12 +25,12 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgLogo"
             android:layout_marginTop="17dp"
-            android:fontFamily="@font/montserrat_bold"
+            android:fontFamily="@font/montserrat"
             android:fontFeatureSettings="aaaaaaaaaaascx"
             android:gravity="center_horizontal"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="37sp" />
+            android:textSize="27sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -39,7 +40,7 @@
             android:fontFamily="@font/montserrat"
             android:fontFeatureSettings="aaaaaaaaaaascx"
             android:gravity="center_horizontal"
-            android:text="Examination group discussion \n Earning Platform"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="17sp"/>
 
