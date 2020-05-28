@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         imageModelArrayList = new ArrayList<>();
-//        imageModelArrayList = populateList();
+        imageModelArrayList = populateList();
 
         vp_slider = findViewById(R.id.vp_slider);
 
@@ -70,7 +70,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private ArrayList<ImageModel> populateList(){
 
+        ArrayList<ImageModel> list = new ArrayList<>();
+
+        for (int value : images_vp) {
+            ImageModel imageModel = new ImageModel();
+            imageModel.setImage_drawable(value);
+            list.add(imageModel);
+        }
+
+        return list;
+    }
 
     public static class ImageModel {
 
