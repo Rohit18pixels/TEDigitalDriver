@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    ArrayList<ModalCountries> arrayList;
+    ArrayList<ModalCountries> arrayList = new ArrayList<>();
     private TextView txtCountryList;
 
     @Override
@@ -41,8 +41,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration);
 
-        if(Utils.isNetworkAvailable(this))
-        getExecuteMethods();
+
 
         initView();
 
@@ -57,7 +56,7 @@ public class RegistrationActivity extends AppCompatActivity {
     void getExecuteMethods()
     {
 
-        arrayList = new ArrayList<>();
+        Utils.customProgress(this,"Please Wait ...");
         arrayList.clear();
 
         JSONObject object = new JSONObject();
@@ -66,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        Utils.customProgress(this,"Please Wait ...");
+        System.out.println("Responce..."+object);
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
                 AppUrl.getCountriesDataService,
@@ -120,6 +119,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
     void listCountries()
     {
+
+        if(Utils.isNetworkAvailable(this))
+            getExecuteMethods();
+
 
         System.out.println("srra"+arrayList.size());
 
