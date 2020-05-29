@@ -1,6 +1,10 @@
 package com.livingtheapp.user;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import me.relex.circleindicator.CircleIndicator;
@@ -13,6 +17,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.livingtheapp.user.auth.ModalCountries;
+import com.livingtheapp.user.auth.RegistrationActivity;
+import com.livingtheapp.user.utils.Utils;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -20,6 +39,8 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    ArrayList<ModalCountries> arrayList = new ArrayList<>();
 
     private ViewPager vp_slider;
     private int images_vp[] = {R.drawable.a, R.drawable.b, R.drawable.c};
@@ -67,7 +88,19 @@ public class MainActivity extends AppCompatActivity {
         }, 2000, 2000);
 
 
+        initView();
 
+    }
+
+    void initView()
+    {
+        findViewById(R.id.txtCountry).setOnClickListener(v -> listCountries());
+        findViewById(R.id.imgBeau).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
+        findViewById(R.id.imgshop).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
+        findViewById(R.id.imgcycle).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
+        findViewById(R.id.imgDrin).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
+        findViewById(R.id.imgRest).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
+        findViewById(R.id.imgBag).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
     }
 
     private ArrayList<ImageModel> populateList(){
@@ -143,6 +176,122 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    void getExecuteMethods()
+    {
 
+        String URL_ = "http://living.indo3dworld.com/api/getCountriesDataService";
+        Utils.customProgress(this,"Please Wait ...");
+        arrayList.clear();
+
+
+
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
+                URL_,
+                null, response -> {
+
+            System.out.println("Responce..."+response);
+
+            try {
+                if(response.getBoolean("status"))
+                {
+                    System.out.println("Responce..."+response);
+                    JSONArray jsonArray = response.getJSONArray("data");
+
+                    System.out.println("Responce..."+jsonArray.length());
+
+                    for (int i=0; i<jsonArray.length();i++)
+                    {
+                        Utils.customProgressStop();
+                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+                        ModalCountries modal = new ModalCountries();
+                        modal.setId(jsonObject.getString("id"));
+                        modal.setCountryName(jsonObject.getString("countryName"));
+                        modal.setCountryStatus(jsonObject.getString("countryStatus"));
+//                        modal.countryFlag(jsonObject.getString("countryStatus"));
+                        modal.setCountryCode(jsonObject.getString("countryCode"));
+                        modal.setCallingCode(jsonObject.getString("callingCode"));
+
+                        arrayList.add(modal);
+
+                    }
+
+
+                }
+            } catch (JSONException e) {
+                Utils.customProgressStop();
+                e.printStackTrace();
+            }
+
+
+        }, error -> {
+            Utils.customProgressStop();
+
+        });
+
+        RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+        request.setRetryPolicy(new DefaultRetryPolicy(20*2000, 2,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        queue.add(request);
+    }
+
+
+    void listCountries()
+    {
+
+        if(Utils.isNetworkAvailable(this))
+            getExecuteMethods();
+
+
+        System.out.println("srra"+arrayList.size());
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        ViewGroup viewGroup = findViewById(android.R.id.content);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_view_countrieslist, viewGroup, false);
+
+        RecyclerView rvList = dialogView.findViewById(R.id.rvList);
+        rvList.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.VERTICAL,false));
+        CountryListAdapter adapter = new CountryListAdapter(arrayList);
+        rvList.setAdapter(adapter);
+
+        builder.setView(dialogView);
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
+    class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.ViewHolder>
+    {
+        ArrayList<ModalCountries> arrayList;
+        public CountryListAdapter(ArrayList<ModalCountries> arrayList) {
+
+            this.arrayList = arrayList;
+        }
+
+        @NonNull
+        @Override
+        public CountryListAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_country_list, parent, false);
+            return new CountryListAdapter.ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull CountryListAdapter.ViewHolder holder, int position) {
+
+            ModalCountries modalCountries =  arrayList.get(position);
+            holder.txtCountry.setText("+"+modalCountries.getCallingCode()+" "+modalCountries.getCountryName());
+        }
+
+        @Override
+        public int getItemCount() {
+            return arrayList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            TextView txtCountry;
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                txtCountry = itemView.findViewById(R.id.txtCountry);
+            }
+        }
+    }
 
 }

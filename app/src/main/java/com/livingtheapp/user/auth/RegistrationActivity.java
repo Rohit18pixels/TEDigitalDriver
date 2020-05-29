@@ -41,8 +41,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_registration);
 
-
-
+        getExecuteMethods();
         initView();
 
     }

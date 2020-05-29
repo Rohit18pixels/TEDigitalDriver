@@ -22,18 +22,31 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_gear"/>
 
-        <TextView
+        <View
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="1dp"/>
+        <TextView
+            android:id="@+id/txtCountry"
+            android:layout_width="wrap_content"
             android:gravity="center"
+            android:drawablePadding="17dp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"
             android:text="Lebanon"
+            android:textSize="19sp"
+            android:layout_gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_down_arrow_white"
             android:fontFamily="@font/montserrat"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"/>
 
         <ImageView
             android:layout_marginEnd="17dp"
@@ -87,24 +100,27 @@
 
 
             <ImageView
+                android:id="@+id/imgBeau"
                 android:padding="3dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="100dp"
-                android:src="@drawable/resa"/>
+                android:src="@drawable/avdddv"/>
 
             <ImageView
+                android:id="@+id/imgshop"
                 android:padding="3dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="100dp"
-                android:src="@drawable/resa"/>
+                android:src="@drawable/fdd"/>
             <ImageView
+                android:id="@+id/imgcycle"
                 android:padding="3dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="100dp"
-                android:src="@drawable/resa"/>
+                android:src="@drawable/asad"/>
 
 
 
@@ -121,6 +137,15 @@
 
 
             <ImageView
+                android:id="@+id/imgDrin"
+                android:padding="3dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="100dp"
+                android:src="@drawable/ass"/>
+
+            <ImageView
+                android:id="@+id/imgRest"
                 android:padding="3dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
@@ -128,18 +153,12 @@
                 android:src="@drawable/resa"/>
 
             <ImageView
+                android:id="@+id/imgBag"
                 android:padding="3dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="100dp"
-                android:src="@drawable/resa"/>
-
-            <ImageView
-                android:padding="3dp"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="100dp"
-                android:src="@drawable/resa"/>
+                android:src="@drawable/abcd"/>
 
 
 
@@ -151,14 +170,15 @@
     <LinearLayout
         android:id="@+id/linOffer"
         android:layout_below="@+id/linCat"
-        android:background="@color/colorPrimaryDark"
+        android:background="@drawable/offer"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
 
-
+<!--
         <TextView
             android:layout_width="wrap_content"
             android:gravity="center"
@@ -186,7 +206,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />-->
 
 
     </LinearLayout>
