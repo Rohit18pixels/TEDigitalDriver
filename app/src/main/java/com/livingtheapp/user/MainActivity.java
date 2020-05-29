@@ -9,12 +9,14 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import me.relex.circleindicator.CircleIndicator;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -27,6 +29,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.livingtheapp.user.auth.ModalCountries;
 import com.livingtheapp.user.auth.RegistrationActivity;
+import com.livingtheapp.user.utils.AppUrl;
 import com.livingtheapp.user.utils.Utils;
 
 import org.json.JSONArray;
@@ -40,9 +43,10 @@ import java.util.TimerTask;
 public class MainActivity extends AppCompatActivity {
 
 
-    ArrayList<ModalCountries> arrayList = new ArrayList<>();
+    ArrayList<ModalCountries> arrayList;
 
     private ViewPager vp_slider;
+    TextView txtCountry;
     private int images_vp[] = {R.drawable.a, R.drawable.b, R.drawable.c};
 
     private SliderPagerAdapter myCustomPagerAdapter;
@@ -50,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
     private static int currentPage = 0;
     private static int NUM_PAGES = 0;
     private ArrayList<ImageModel> imageModelArrayList;
+    private CountryListAdapter adapter;
+    private RecyclerView rvList;
+    private AlertDialog.Builder builder;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,13 +96,15 @@ public class MainActivity extends AppCompatActivity {
         }, 2000, 2000);
 
 
+         arrayList = new ArrayList<>();
         initView();
 
     }
 
     void initView()
     {
-        findViewById(R.id.txtCountry).setOnClickListener(v -> listCountries());
+        txtCountry = findViewById(R.id.txtCountry);
+        txtCountry.setOnClickListener(v -> listCountries());
         findViewById(R.id.imgBeau).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
         findViewById(R.id.imgshop).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
         findViewById(R.id.imgcycle).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
@@ -186,18 +196,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
-                URL_,
+                AppUrl.getCountriesDataService,
                 null, response -> {
 
-            System.out.println("Responce..."+response);
 
             try {
-                if(response.getBoolean("status"))
+                if(response.getString("status").equalsIgnoreCase("1"))
                 {
                     System.out.println("Responce..."+response);
                     JSONArray jsonArray = response.getJSONArray("data");
 
-                    System.out.println("Responce..."+jsonArray.length());
+
 
                     for (int i=0; i<jsonArray.length();i++)
                     {
@@ -214,6 +223,11 @@ public class MainActivity extends AppCompatActivity {
                         arrayList.add(modal);
 
                     }
+
+                    System.out.println("srra"+arrayList.size());
+
+                    adapter = new CountryListAdapter(arrayList);
+                    rvList.setAdapter(adapter);
 
 
                 }
@@ -242,20 +256,52 @@ public class MainActivity extends AppCompatActivity {
             getExecuteMethods();
 
 
-        System.out.println("srra"+arrayList.size());
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+         builder = new AlertDialog.Builder(MainActivity.this);
         ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_view_countrieslist, viewGroup, false);
 
-        RecyclerView rvList = dialogView.findViewById(R.id.rvList);
-        rvList.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.VERTICAL,false));
-        CountryListAdapter adapter = new CountryListAdapter(arrayList);
-        rvList.setAdapter(adapter);
-
+        View dialogView = LayoutInflater.from(MainActivity.this).inflate(R.layout.custom_view_countrieslist,
+                viewGroup,
+                false);
         builder.setView(dialogView);
-        AlertDialog alertDialog = builder.create();
+
+        rvList = dialogView.findViewById(R.id.rvList);
+        rvList.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.VERTICAL,false));
+
+
+        alertDialog = builder.create();
         alertDialog.show();
+    }
+
+
+    void listCountries2()
+    {
+
+        if(Utils.isNetworkAvailable(this))
+            getExecuteMethods();
+
+
+
+
+        Dialog dialog_auth = new Dialog(MainActivity.this);
+        dialog_auth.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog_auth.setContentView(R.layout.custom_view_countrieslist);
+        dialog_auth.show();
+        dialog_auth.setCanceledOnTouchOutside(false);
+        dialog_auth.setCancelable(false);
+
+        Window window = dialog_auth.getWindow();
+        assert window != null;
+        window.setBackgroundDrawableResource(android.R.color.transparent);
+        window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+
+        rvList = dialog_auth.findViewById(R.id.rvList);
+        rvList.setLayoutManager(new LinearLayoutManager(MainActivity.this,RecyclerView.VERTICAL,false));
+
+
+
+
     }
 
     class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.ViewHolder>
@@ -277,7 +323,12 @@ public class MainActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull CountryListAdapter.ViewHolder holder, int position) {
 
             ModalCountries modalCountries =  arrayList.get(position);
-            holder.txtCountry.setText("+"+modalCountries.getCallingCode()+" "+modalCountries.getCountryName());
+            holder.txtCountry.setText("+"+modalCountries.getCallingCode()+" , "+modalCountries.getCountryName());
+            holder.txtCountry.setOnClickListener(v ->
+            {
+                txtCountry.setText(modalCountries.getCountryName());
+                alertDialog.dismiss();
+            });
         }
 
         @Override
