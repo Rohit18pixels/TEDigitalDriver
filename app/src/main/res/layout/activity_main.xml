@@ -64,7 +64,7 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/finedining"/>
 
@@ -217,8 +217,8 @@
         android:id="@+id/rlSlider"
         android:layout_below="@+id/linOffer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp">
+        android:layout_height="200dp"
+        android:layout_marginTop="3dp">
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/vp_slider"
@@ -280,7 +280,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_discount" />
+                android:src="@drawable/ic_wallet" />
         </LinearLayout  >
 
         <LinearLayout
@@ -292,7 +292,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_heart" />
+                android:src="@drawable/ic_discount" />
         </LinearLayout>
     </LinearLayout>
 
