@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Living The App</string>
+
+
+    <string name="logintitle">Invalid Access</string>
+    <string name="loginmess">All feilds are mandatory please insert correct mobile number and password</string>
 </resources>

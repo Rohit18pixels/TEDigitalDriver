@@ -11,20 +11,31 @@ import android.widget.TextView;
 
 import com.livingtheapp.user.MainActivity;
 import com.livingtheapp.user.R;
+import com.livingtheapp.user.utils.CustomPerference;
 
 public class AuthMainActivity extends AppCompatActivity {
 
 
+    private String userId = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow()
-                .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setTheme(R.style.AppTheme);
-        setContentView(R.layout.activity_auth_main);
-        
-        initView();
+        userId = CustomPerference.getString(this, CustomPerference.USER_ID);
+        if (userId != null)
+        {
+            startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+        else {
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            this.getWindow()
+                    .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+            setTheme(R.style.AppTheme);
+            setContentView(R.layout.activity_auth_main);
+            initView();
+        }
+
 
 
     }

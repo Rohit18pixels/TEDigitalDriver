@@ -17,6 +17,7 @@ import com.android.volley.toolbox.Volley;
 import com.livingtheapp.user.MainActivity;
 import com.livingtheapp.user.R;
 import com.livingtheapp.user.utils.AppUrl;
+import com.livingtheapp.user.utils.CustomPerference;
 import com.livingtheapp.user.utils.Utils;
 
 import org.json.JSONException;
@@ -69,11 +70,35 @@ public class LoginActivity extends AppCompatActivity {
                             Utils.customProgressStop();
 
                             try {
-                                if(response.getString("status").equalsIgnoreCase("1"))
+                                if(response.getString("status").equalsIgnoreCase("1")) {
+
+                                    JSONObject object = response.getJSONObject("data");
+
+                                    String userName = object.getString("firstName");
+                                    String userEmail = object.getString("email");
+                                    String userMobile = object.getString("contactNo");
+                                    String userPassword = pass;
+                                    String regId = object.getString("id");
+
+                                    CustomPerference.putString(LoginActivity.this,CustomPerference.USER_NAME,
+                                            userName);
+                                    CustomPerference.putString(LoginActivity.this,CustomPerference.USER_EMAIL,
+                                            userEmail);
+                                    CustomPerference.putString(LoginActivity.this,CustomPerference.USER_MOBILE,
+                                            userMobile);
+                                    CustomPerference.putString(LoginActivity.this,CustomPerference.USER_PASSWORD,
+                                            userPassword);
+                                    CustomPerference.putString(LoginActivity.this,CustomPerference.USER_ID,
+                                            regId);
+                                    CustomPerference.putBoolean(LoginActivity.this,CustomPerference.ISLOGIN,true);
                                     startActivity(new Intent(this, MainActivity.class));
+                                }
                                 else
-                                    Toast.makeText(getApplicationContext(),response.getString("message"),Toast.LENGTH_LONG).show();
-                                System.out.println("Res>>>>"+response);
+
+                                    Utils.CustomAlert(LoginActivity.this,
+                                            "Some Problem",
+                                            response.getString("message"));
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

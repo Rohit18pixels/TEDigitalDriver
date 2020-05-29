@@ -30,6 +30,7 @@ import com.android.volley.toolbox.Volley;
 import com.livingtheapp.user.auth.ModalCountries;
 import com.livingtheapp.user.auth.RegistrationActivity;
 import com.livingtheapp.user.utils.AppUrl;
+import com.livingtheapp.user.utils.CustomPerference;
 import com.livingtheapp.user.utils.Utils;
 
 import org.json.JSONArray;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<ModalCountries> arrayList;
 
     private ViewPager vp_slider;
-    TextView txtCountry;
+    TextView txtCountry,txtImgMsg;
     private int images_vp[] = {R.drawable.a, R.drawable.b, R.drawable.c};
 
     private SliderPagerAdapter myCustomPagerAdapter;
@@ -58,11 +59,15 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rvList;
     private AlertDialog.Builder builder;
     private AlertDialog alertDialog;
+    private String userId = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        userId = CustomPerference.getString(this,CustomPerference.USER_ID);
+        if (userId!=null)
         setContentView(R.layout.activity_main);
+        else setContentView(R.layout.activity_main_notlogin);
 
         imageModelArrayList = new ArrayList<>();
         imageModelArrayList = populateList();
@@ -103,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
 
     void initView()
     {
+        txtImgMsg = findViewById(R.id.txtImgMsg);
+        txtImgMsg.setText("Welcome "+ CustomPerference.getString(this,CustomPerference.USER_NAME)+" " +
+                "Enjoy the best offers and deals here !");
         txtCountry = findViewById(R.id.txtCountry);
 //        txtCountry.setOnClickListener(v -> listCountries());
         findViewById(R.id.imgBeau).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());

@@ -1,14 +1,12 @@
 package com.livingtheapp.user.auth;
 
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,11 +14,8 @@ import android.widget.Toast;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.livingtheapp.user.MainActivity;
 import com.livingtheapp.user.R;
 import com.livingtheapp.user.utils.AppConstant;
 import com.livingtheapp.user.utils.AppUrl;
@@ -67,8 +62,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     void initView()
     {
-
-
 
 
         inputmobile = findViewById(R.id.inputmobile);
@@ -304,8 +297,10 @@ public class RegistrationActivity extends AppCompatActivity {
                                 if(response.getString("status").equalsIgnoreCase("1"))
                                     startActivity(new Intent(this,LoginActivity.class));
                                 else
-                                    Toast.makeText(getApplicationContext(),response.getString("message"),Toast.LENGTH_LONG).show();
-                                        System.out.println("Res>>>>"+response);
+                                    Utils.CustomAlert(this,
+                                            "Some Problem",
+                                            response.getString("message"));
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -316,7 +311,8 @@ public class RegistrationActivity extends AppCompatActivity {
                         });
 
                 RequestQueue queue = Volley.newRequestQueue(this);
-                request.setRetryPolicy(new DefaultRetryPolicy(20 * 2000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                request.setRetryPolicy(new DefaultRetryPolicy(20 * 2000, 2,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
                 queue.add(request);
 
             }else
