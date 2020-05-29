@@ -34,6 +34,7 @@ public class AuthMainActivity extends AppCompatActivity {
 
         findViewById(R.id.txtGuestAcc).setOnClickListener(v -> getGuestAccount());
         findViewById(R.id.txtGetStarted).setOnClickListener(v -> getStartedRegistration());
+        findViewById(R.id.txtLogin).setOnClickListener(v -> getStartedLogin());
     }
 
     void getGuestAccount()
@@ -43,5 +44,9 @@ public class AuthMainActivity extends AppCompatActivity {
     void getStartedRegistration()
     {
         startActivity(new Intent(this, RegistrationActivity.class));
+    }
+    void getStartedLogin()
+    {
+        startActivity(new Intent(this, LoginActivity.class));
     }
 }

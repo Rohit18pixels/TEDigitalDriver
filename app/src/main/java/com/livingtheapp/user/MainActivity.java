@@ -104,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
     void initView()
     {
         txtCountry = findViewById(R.id.txtCountry);
-        txtCountry.setOnClickListener(v -> listCountries());
+//        txtCountry.setOnClickListener(v -> listCountries());
         findViewById(R.id.imgBeau).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
         findViewById(R.id.imgshop).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());
         findViewById(R.id.imgcycle).setOnClickListener(v -> Toast.makeText(getApplicationContext(),"Working on this",Toast.LENGTH_LONG).show());

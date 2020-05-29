@@ -47,7 +47,7 @@
 
         <EditText
 
-            android:id="@+id/inputSearchEditText"
+            android:id="@+id/inputEmailId"
 
             android:layout_width="320dp"
             android:layout_height="60dp"
@@ -69,6 +69,7 @@
 
         <EditText
 
+            android:id="@+id/inputPassword"
             android:layout_width="320dp"
             android:layout_height="60dp"
             android:ellipsize="start"
