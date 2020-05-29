@@ -1,13 +1,17 @@
 package com.livingtheapp.user.auth;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -85,9 +89,49 @@ public class RegistrationActivity extends AppCompatActivity {
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
         ViewGroup viewGroup = findViewById(android.R.id.content);
-        View dialogView = LayoutInflater.from(v.getContext()).inflate(R.layout.custom, viewGroup, false);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_view_countrieslist, viewGroup, false);
         builder.setView(dialogView);
+        RecyclerView rvList = dialogView.findViewById(R.id.rvList);
+        rvList.setLayoutManager(new LinearLayoutManager(RegistrationActivity.this,RecyclerView.VERTICAL,false));
+        CountryListAdapter adapter = new CountryListAdapter(arrayList);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
+
+    class CountryListAdapter extends RecyclerView.Adapter<CountryListAdapter.ViewHolder>
+    {
+        ArrayList<ModalCountries> arrayList;
+        public CountryListAdapter(ArrayList<ModalCountries> arrayList) {
+
+            this.arrayList = arrayList;
+        }
+
+        @NonNull
+        @Override
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_country_list, parent, false);
+            return new ViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+            ModalCountries modalCountries =  arrayList.get(position);
+            holder.txtCountry.setText("+"+modalCountries.getCallingCode()+" "+modalCountries.getCountryName());
+        }
+
+        @Override
+        public int getItemCount() {
+            return arrayList.size();
+        }
+
+        public class ViewHolder extends RecyclerView.ViewHolder {
+            TextView txtCountry;
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+                txtCountry = itemView.findViewById(R.id.txtCountry);
+            }
+        }
+    }
 }
+
