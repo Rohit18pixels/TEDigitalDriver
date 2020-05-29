@@ -31,11 +31,17 @@ public class AuthMainActivity extends AppCompatActivity {
     
     void initView()
     {
+
         findViewById(R.id.txtGuestAcc).setOnClickListener(v -> getGuestAccount());
+        findViewById(R.id.txtGetStarted).setOnClickListener(v -> getStartedRegistration());
     }
 
     void getGuestAccount()
     {
         startActivity(new Intent(this, MainActivity.class));
+    }
+    void getStartedRegistration()
+    {
+        startActivity(new Intent(this, RegistrationActivity.class));
     }
 }

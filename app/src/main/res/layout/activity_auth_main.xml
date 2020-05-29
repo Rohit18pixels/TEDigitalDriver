@@ -6,15 +6,18 @@
     tools:context=".auth.AuthMainActivity">
 
     <ImageView
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="fitXY"
-        android:src="@drawable/mount"/>
+        android:background="@color/colorPrimaryDark" />
+<!--    android:src="@drawable/mount"-->
 
-    <ImageView
+
+ <!--   <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#80002E02"/>
+        android:background="#80002E02"/>-->
 
     <ImageView
         android:layout_width="240dp"
@@ -44,6 +47,7 @@
             android:textSize="19sp" />
 
         <TextView
+            android:id="@+id/txtGetStarted"
             android:layout_marginTop="7dp"
             android:gravity="center"
             android:layout_width="240dp"
