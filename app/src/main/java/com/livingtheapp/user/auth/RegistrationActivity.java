@@ -22,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.livingtheapp.user.R;
 import com.livingtheapp.user.utils.AppUrl;
+import com.livingtheapp.user.utils.Utils;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,29 +33,58 @@ import java.util.ArrayList;
 public class RegistrationActivity extends AppCompatActivity {
 
     ArrayList<ModalCountries> arrayList;
+    private TextView txtCountryList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_registration);
 
-        arrayList = new ArrayList<>();
+        if(Utils.isNetworkAvailable(this))
         getExecuteMethods();
+
+        initView();
+
+    }
+
+    void initView()
+    {
+        findViewById(R.id.txtCountryList).setOnClickListener(v -> listCountries());
+
     }
 
     void getExecuteMethods()
     {
 
+        arrayList = new ArrayList<>();
+        arrayList.clear();
+
+        JSONObject object = new JSONObject();
+        try {
+            object.put("token","abcd");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Utils.customProgress(this,"Please Wait ...");
+
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
                 AppUrl.getCountriesDataService,
-                null, response -> {
+                object, response -> {
 
+            System.out.println("Responce..."+AppUrl.getCountriesDataService);
+            System.out.println("Responce..."+response);
             try {
-                if(response.getBoolean("status"))
+                if(response.getString("status").equalsIgnoreCase("1"))
                 {
+                    System.out.println("Responce..."+response);
                     JSONArray jsonArray = response.getJSONArray("data");
+
+                    System.out.println("Responce..."+jsonArray.length());
+
                     for (int i=0; i<jsonArray.length();i++)
                     {
+                        Utils.customProgressStop();
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
                         ModalCountries modal = new ModalCountries();
                         modal.setId(jsonObject.getString("id"));
@@ -71,11 +101,14 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 }
             } catch (JSONException e) {
+                Utils.customProgressStop();
+
                 e.printStackTrace();
             }
 
 
         }, error -> {
+            Utils.customProgressStop();
 
                 });
 
@@ -87,13 +120,19 @@ public class RegistrationActivity extends AppCompatActivity {
 
     void listCountries()
     {
+
+        System.out.println("srra"+arrayList.size());
+
         AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
         ViewGroup viewGroup = findViewById(android.R.id.content);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.custom_view_countrieslist, viewGroup, false);
-        builder.setView(dialogView);
+
         RecyclerView rvList = dialogView.findViewById(R.id.rvList);
         rvList.setLayoutManager(new LinearLayoutManager(RegistrationActivity.this,RecyclerView.VERTICAL,false));
         CountryListAdapter adapter = new CountryListAdapter(arrayList);
+        rvList.setAdapter(adapter);
+
+        builder.setView(dialogView);
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
