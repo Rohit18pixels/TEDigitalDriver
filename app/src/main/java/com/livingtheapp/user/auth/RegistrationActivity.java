@@ -56,25 +56,20 @@ public class RegistrationActivity extends AppCompatActivity {
     void getExecuteMethods()
     {
 
+        String URL_ = "http://living.indo3dworld.com/api/getCountriesDataService";
         Utils.customProgress(this,"Please Wait ...");
         arrayList.clear();
 
-        JSONObject object = new JSONObject();
-        try {
-            object.put("token","abcd");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Responce..."+object);
+
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST,
-                AppUrl.getCountriesDataService,
-                object, response -> {
+                URL_,
+                null, response -> {
 
-            System.out.println("Responce..."+AppUrl.getCountriesDataService);
             System.out.println("Responce..."+response);
+
             try {
-                if(response.getString("status").equalsIgnoreCase("1"))
+                if(response.getBoolean("status"))
                 {
                     System.out.println("Responce..."+response);
                     JSONArray jsonArray = response.getJSONArray("data");
@@ -101,7 +96,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
             } catch (JSONException e) {
                 Utils.customProgressStop();
-
                 e.printStackTrace();
             }
 
@@ -112,7 +106,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 });
 
         RequestQueue queue = Volley.newRequestQueue(RegistrationActivity.this);
-        request.setRetryPolicy(new DefaultRetryPolicy(20*2000, 2, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        request.setRetryPolicy(new DefaultRetryPolicy(20*2000, 2,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(request);
     }
 
