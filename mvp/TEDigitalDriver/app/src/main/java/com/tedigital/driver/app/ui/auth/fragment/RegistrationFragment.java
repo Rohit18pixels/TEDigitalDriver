@@ -34,7 +34,7 @@ public class RegistrationFragment extends BaseFragment<FragmentRegistrationBindi
     private String bloodGroup = "";
 
     NavController navController;
-    public static JsonArray jsonArray = new JsonArray();;
+    public static JsonArray jsonArray = new JsonArray();
 
     String[] valuePhoneTypes = {"Feature Phone", "Smart phone"};
     String[] labelPhoneTypes = {"Feature Phone", "Smart phone"};
