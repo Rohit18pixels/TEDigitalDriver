@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!-- <ScrollView
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:scrollbars="none">-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/txtName"
+            style="@style/MediumTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="Truck Details"
+            android:textColor="@color/white"
+            android:visibility="visible"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtName"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.100"
+                android:background="@color/white" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.100"
+                android:background="@drawable/gradient_red_left_to_right" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtName"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_50sdp"
+                app:cardCornerRadius="@dimen/_10sdp"
+                app:cardElevation="@dimen/_3ssp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_gray_top_to_bottom">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_driver_name"
+                        style="@style/HeadingTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_25sdp"
+                        android:gravity="center"
+                        android:text="Truck Assigned"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/card_view_image"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_below="@+id/txt_driver_name"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="17dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:src="@drawable/trassign" />
+
+                    </androidx.cardview.widget.CardView>
+
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_member_id"
+                        style="@style/RegularTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/card_view_image"
+                        android:layout_marginTop="17dp"
+                        android:gravity="center"
+                        android:text="Sorry, Your transporter hasn't assign any truck for you"
+                        android:textColor="#E91E63"
+                        tools:ignore="HardcodedText" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txt_wallet_id"
+                        android:visibility="invisible"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txt_member_id"
+                        android:layout_marginTop="17dp"
+                        android:gravity="center"
+                        android:text="@string/app_name"
+                        android:textColor="@color/black"
+                        tools:ignore="HardcodedText" />
+
+
+                    <Button
+
+                        android:layout_below="@+id/txt_wallet_id"
+                        android:id="@+id/btn_update_profile"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/activity_horizontal_margin"
+                        android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+                        android:fontFamily="@font/source_sans_pro"
+
+                        android:layout_marginTop="27dp"
+                        android:text="Ok"
+                        android:textAllCaps="false"
+                        tools:ignore="HardcodedText" />
+
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:id="@+id/blur"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:visibility="gone" />
+
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:src="@drawable/trassign"/>
+
+            <TextView
+                android:id="@+id/txt_msg"
+                style="@style/HeadingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:justificationMode="inter_word"
+                android:padding="13dp"
+                android:text=""
+                tools:ignore="HardcodedText,UnusedAttribute" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_msg"
+                android:orientation="vertical"
+                android:padding="13dp"
+                android:visibility="gone">
+
+
+                <TextView
+                    style="@style/MediumTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="19dp"
+                    android:padding="7dp"
+                    android:text="Truck Details"
+                    android:textColor="@color/black" />
+
+                <View
+                    android:layout_width="180dp"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="9dp"
+                    android:background="@color/colorPrimaryDark" />
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:focusable="false"
+                    android:hint="Truck Assigned"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_truck_assigned"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:hint="Truck Number*"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_truck_number"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload Truck Front Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_truck_front"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Front Image"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload Truck Side Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_truck_side"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Side Image"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload Truck Back Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_truck_back"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Back Image"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload RC Front Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_rc_front"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Front Image"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:fontFamily="@font/source_sans_pro"
+
+                android:text="Update Profile"
+                android:textAllCaps="false"
+                tools:ignore="HardcodedText" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+    <!--    </ScrollView>-->
+
+</layout>

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtName"
+                style="@style/MediumTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimaryDark"
+                android:gravity="center"
+                android:padding="13dp"
+                android:text="Complete KYC"
+                android:textColor="@color/white"
+                tools:ignore="HardcodedText" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="13dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:hint="Driving License*"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_license"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:id="@+id/txt_license_name"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload License Front Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_license_front"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:drawablePadding="9dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Upload Front Image"
+                            android:textColor="@color/white"
+                            app:drawableStartCompat="@drawable/ic_attachment"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:hint="Special License"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_special_license"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:id="@+id/txt_special_name"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload Image File*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_special_license"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:drawablePadding="9dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Upload Front Image"
+                            android:textColor="@color/white"
+                            app:drawableStartCompat="@drawable/ic_attachment"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:hint="PAN Number"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_pan_number"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPanUpload"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:id="@+id/txt_imgpan_name"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload PAN Front Image"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/imgPan"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:drawablePadding="9dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Upload Font Image"
+                            android:textColor="@color/white"
+                            app:drawableStartCompat="@drawable/ic_attachment"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:hint="Aadhar Number"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_adhaar"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text"
+                        android:maxLength="12"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:id="@+id/txt_aadhar_name"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload Aadhar Front Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_adhaar_front"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:drawablePadding="9dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Upload Font Image"
+                            android:textColor="@color/white"
+                            app:drawableStartCompat="@drawable/ic_attachment"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:id="@+id/img_adhaar_back"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:drawablePadding="9dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Upload Back Image"
+                            android:textColor="@color/white"
+                            app:drawableStartCompat="@drawable/ic_attachment"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+
+                    android:hint="Upload Selfie with truck*"
+                    android:visibility="gone"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/input_upload_selfie"
+                        style="@style/SmallTextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="true"
+                        android:inputType="text"
+                        android:maxLength="12"
+                        android:singleLine="true" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/input_type_margin_top"
+                    android:text="Upload Selfie with truck*"
+                    tools:ignore="HardcodedText" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            android:id="@+id/txt_selfie_name"
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text="Upload Selfie with truck*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_selfie_truck"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:drawablePadding="9dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Take Selfie"
+                            android:textColor="@color/white"
+                            app:drawableStartCompat="@drawable/ic_attachment"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload Aadhar Back Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/imgAdhaarBack"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Back Image"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:cardBackgroundColor="@color/gray"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="7dp"
+                    app:cardUseCompatPadding="true">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:gravity="center_vertical">
+
+
+                        <TextView
+                            style="@style/SmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentStart="true"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:singleLine="true"
+                            android:text=" Upload License Back Image*"
+                            tools:ignore="HardcodedText" />
+
+
+                        <TextView
+                            android:id="@+id/img_license_back"
+
+                            style="@style/BoldSmallTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentEnd="true"
+
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/colorPrimaryDark"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="13dp"
+                            android:paddingRight="13dp"
+                            android:text="Back Image"
+                            android:textColor="@color/white"
+                            tools:ignore="HardcodedText" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone" />
+
+                <Button
+
+                    android:id="@+id/btn_update_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_horizontal_margin"
+                    android:fontFamily="@font/source_sans_pro"
+
+                    android:text="Update Profile"
+                    android:textAllCaps="false"
+                    tools:ignore="HardcodedText" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</layout>

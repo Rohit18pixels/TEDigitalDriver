@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="17dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="---Select a language---" />
+
+        <TextView
+            android:id="@+id/txt_hindi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="हिन्दी"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_english"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="English"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_bengali"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="বাংলা"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_marathi"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="मराठी"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_gujrati"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="ગુજરાતી"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_tamil"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="اردو"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_kannad"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="ಕನ್ನಡ"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_malyalam"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="മലയാളം"
+
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_punjabi"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="13dp"
+            android:text="ਪੰਜਾਬੀ"
+
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+</layout>
